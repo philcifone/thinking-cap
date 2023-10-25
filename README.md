@@ -9,5 +9,6 @@ Basic functionality. Can save form submission in list.
 - combine add idea and save into one button
 - search keyword functionality
 - delete function for ideas
-- general css tweaking
+- edit function for ideas
+- general css tweaks (button margin padding)
 - user accounts?
