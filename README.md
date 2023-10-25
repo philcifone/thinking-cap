@@ -6,9 +6,9 @@ Basic functionality. Can save form submission in list.
 
 ## TO DO:
 
+- picture upload *(working)*
 - search keyword functionality
-- delete function for ideas
 - edit function for ideas
 - general css tweaks (button margin padding)
 - user accounts?
-- picture upload
+
