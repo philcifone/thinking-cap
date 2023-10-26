@@ -10,7 +10,15 @@ if (localStorage.getItem('ideas')) {
 function addIdea(event) {
     event.preventDefault();
 
-    const timestamp = new Date().toLocaleString();
+    const timestamp = new Date().toLocaleString('en-US', {
+        hour12: false, // Ensure 24-hour format
+        year: 'numeric',
+        month: '2-digit',
+        day: '2-digit',
+        hour: '2-digit',
+        minute: '2-digit',
+        second: '2-digit',
+    });
     const title = document.getElementById("title").value;
     const description = document.getElementById("description").value;
     const tags = document.getElementById("tags").value.split(',');
