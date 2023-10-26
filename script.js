@@ -24,7 +24,7 @@ function addIdea(event) {
         saveIdeas();
     };
 
-    // Check if image is selected
+    // Check if image is selected, if else statement since image is not required
     if (image) {
         reader.readAsDataURL(image); // convert image to data URL
     } else {
