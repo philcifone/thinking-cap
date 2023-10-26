@@ -28,7 +28,7 @@ function addIdea(event) {
     const reader = new FileReader();
     reader.onload = function () {
         const imageDataUrl = reader.result; // get data url
-        ideas.push({ timestamp, title, description, tags, image: imageDataUrl});
+        ideas.push({ timestamp, title, description, tags, image: imageDataUrl });
         listIdeas();
         saveIdeas();
     };
@@ -37,7 +37,7 @@ function addIdea(event) {
     if (image) {
         reader.readAsDataURL(image); // convert image to data URL
     } else {
-        ideas.push({ title, description, tags, image: null });
+        ideas.push({ timestamp, title, description, tags, image: null });
         listIdeas();
         saveIdeas();
     };
@@ -57,12 +57,14 @@ function listIdeas() {
         output.innerHTML = '';
 
         ideas.forEach((idea, index) => {
-            output.innerHTML += `<p><strong>${idea.timestamp}<br><br>Title:</strong> ${idea.title}</p>`;        output.innerHTML += `<p><strong>Description:</strong> ${idea.description}</p>`;
+            output.innerHTML += `<p><strong>${idea.timestamp}<br><br>Title:</strong> ${idea.title}</p>`;        
+            output.innerHTML += `<p><strong>Description:</strong> ${idea.description}</p>`;
             output.innerHTML += `<p><strong>Tags:</strong> ${idea.tags.join(', ')}</p><br>`;
             if (idea.image) {
                 output.innerHTML += `<img src="${idea.image}" width="200" height="auto" /><br>`;
             }
             output.innerHTML += `<button onclick="deleteIdea(${index})">Delete</button><br><br>`;
+            output.innerHTML += `<button onclick="editIdea(${index})">Edit</button><br><br>`;
         });
     } else {
         output.innerHTML = ''; // hide idea list
@@ -89,6 +91,16 @@ document.getElementById('listButton').addEventListener('click', function () {
 // Function to save ideas to local storage
 function saveIdeas() {
     localStorage.setItem('ideas', JSON.stringify(ideas));
+}
+
+// Function to edit idea
+function editIdea(index) {
+    const newDescription = prompt("Edit the Description:", ideas[index].description);
+    if (newDescription !== null) {
+        ideas[index].description = newDescription;
+        saveIdeas();
+        listIdeas();
+    }
 }
 
 // Function to delete an idea by index
