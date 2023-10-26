@@ -63,8 +63,10 @@ function listIdeas() {
             if (idea.image) {
                 output.innerHTML += `<img src="${idea.image}" width="200" height="auto" /><br>`;
             }
-            output.innerHTML += `<button onclick="deleteIdea(${index})">Delete</button><br><br>`;
-            output.innerHTML += `<button onclick="editIdea(${index})">Edit</button><br><br>`;
+            output.innerHTML += `<div class="button-container">
+            <button onclick="deleteIdea(${index})">Delete</button>
+            <button onclick="editIdea(${index})">Edit</button>
+        </div><br><br>`;
         });
     } else {
         output.innerHTML = ''; // hide idea list
@@ -139,7 +141,10 @@ function listFilteredIdeas(filteredIdeas) {
         if (idea.image) {
             output.innerHTML += `<img src="${idea.image}" width="200" height="auto" /><br>`;
         }
-        output.innerHTML += `<button onclick="deleteIdea(${index})">Delete</button><br><br>`;
+        output.innerHTML += `<div class="button-container">
+        <button onclick="deleteIdea(${index})">Delete</button>
+        <button onclick="editIdea(${index})">Edit</button>
+    </div><br><br>`;
     });
 }
 
