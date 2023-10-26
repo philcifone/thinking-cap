@@ -8,8 +8,6 @@ Picture upload as of 2023/10/26
 
 ## TO DO:
 
-- search keyword functionality
-- edit function for ideas
-- general css tweaks (button margin padding)
-- user accounts?
+- edit function for ideas - working for description but still needs work overall
+- more css updates / font, etc.
 
