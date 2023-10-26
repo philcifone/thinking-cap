@@ -40,11 +40,13 @@ button {
     border: none;
     border-radius: 5px;
     cursor: pointer;
+    margin: 10px;
 }
 
 button[type="submit"] {
     margin-top: 10px;
 }
+
 #output {
     width: 100%;
     margin: 10px;
