@@ -34,7 +34,8 @@ input,textarea {
     padding: 10px;
 }
 input[type="reset"] {
-    width: auto;
+    width: 5%;
+    text-align: center;
     background-color: #616161;
     color: white;
     padding: 10px 10px;
@@ -47,6 +48,7 @@ input[type="reset"] {
 
 input[type="file"] {
     width: 90%;
+    border-radius: 8px;
 }
 
 button {
@@ -64,14 +66,29 @@ button[type="submit"] {
     margin-top: 10px;
 }
 
-button[id="listButton"] {
-    margin: 10px;
+#listButton {
+    margin-left: 30px;
+}
+
+#searchButton {
+    margin-left: 30px;
+}
+
+#searchTags {
+    margin-left: 30px;
+    width: auto;
+}
+
+label[for="searchTags"] {
+    margin-left: 30px;
+    margin-bottom: 1px;
+    color: #ffffff;
 }
 
 #output {
     width: auto;
-    margin: 10px;
-    padding: 20px;
+    margin: 30px;
+    padding: 30px;
     background-color: #a8a8a8;
     border-radius: 8px;
 }

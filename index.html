@@ -7,6 +7,11 @@
 <body>
     <h1>Thinking Cap</h1>
 
+    <label for="searchTags">Search:</label>
+    <input type="text" id="searchTags" name="searchTags">
+    <button id="searchButton">Search</button>
+
+
     <form id="ideaForm">
         <label for="title">Title:</label>
         <input type="text" id="title" name="title" required><br>
@@ -19,7 +24,7 @@
         
         <label for="image">Add Picture:</label>
         <input type="file" id="image" name="image">
-        <input type="reset" value="X"><br>
+        <input type="reset" id="clearImage" value="X"><br>        
 
         <button type="submit">Add Idea</button>
     </form>
