@@ -76,7 +76,7 @@ function listIdeas() {
         ideas.forEach((idea, index) => {
             output.innerHTML += `<p><strong>${idea.timestamp}<br><br>Title:</strong> ${idea.title}</p>`;        
             output.innerHTML += `<p><strong>Description:</strong> ${idea.description}</p>`;
-            output.innerHTML += `<p><strong>Tags:</strong> ${idea.tags.join(', ')}</p><br>`;
+            output.innerHTML += `<p><strong>Tags:</strong> ${idea.tags.join(', ')}</p>`;
             if (idea.image) {
                 output.innerHTML += `<img src="${idea.image}" width="200" height="auto" /><br>`;
             }
@@ -221,7 +221,7 @@ function listFilteredIdeas(filteredIdeas) {
         output.innerHTML += `<p><strong>${idea.timestamp}<br><br>Title:</strong> ${idea.title}</p>`;        output.innerHTML += `<p><strong>Description:</strong> ${idea.description}</p>`;
         output.innerHTML += `<p><strong>Tags:</strong> ${idea.tags.join(', ')}</p>`;
         if (idea.image) {
-            output.innerHTML += `<img src="${idea.image}" width="200" height="auto" /><br>`;
+            output.innerHTML += `<img src="${idea.image}" width="500" height="auto" /><br>`;
         }
         output.innerHTML += `<div class="button-container">
         <button onclick="deleteIdea(${index})">Delete</button>
