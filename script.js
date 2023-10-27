@@ -6,13 +6,17 @@ if (localStorage.getItem('ideas')) {
     ideas = JSON.parse(localStorage.getItem('ideas'));
 }
 
-// Add an event listener to the button to toggle the form's visibility
+// Add an event listener to the form button to toggle the form's visibility and update button text
 document.getElementById('toggleFormButton').addEventListener('click', function () {
     const ideaForm = document.getElementById('ideaForm');
+    const toggleFormButton = document.getElementById('toggleFormButton');
+    
     if (ideaForm.style.display === 'none' || ideaForm.style.display === '') {
         ideaForm.style.display = 'block';
+        toggleFormButton.textContent = 'Hide Form';
     } else {
         ideaForm.style.display = 'none';
+        toggleFormButton.textContent = 'Show Form';
     }
 });
 
@@ -67,7 +71,7 @@ function listIdeas() {
     editForm.style.display = 'none'; // Hide the edit form initially
 
     if (showIdeas) {
-        output.innerHTML = 'Ideas List';
+        output.innerHTML = '';
 
         ideas.forEach((idea, index) => {
             output.innerHTML += `<p><strong>${idea.timestamp}<br><br>Title:</strong> ${idea.title}</p>`;        
@@ -82,7 +86,7 @@ function listIdeas() {
         </div><br><br>`;
         });
     } else {
-        output.innerHTML = 'Ideas List'; // hide idea list
+        output.innerHTML = '<h3>Ideas List</h3>'; // hide idea list
     }
 }
 
@@ -170,6 +174,15 @@ function saveEditedIdea(event) {
 }
 
 document.getElementById('editForm').addEventListener('submit', saveEditedIdea);
+
+// Add an event listener to close the edit form when the Cancel button is clicked
+document.getElementById('cancelEdit').addEventListener('click', function () {
+    const editForm = document.getElementById('editForm');
+    const toggleEditFormButton = document.getElementById('toggleEditFormButton');
+    
+    editForm.style.display = 'none';
+    toggleEditFormButton.textContent = 'Show Edit Form';
+});
 
 // Function to delete an idea by index
 function deleteIdea(index) {

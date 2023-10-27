@@ -14,30 +14,32 @@
     <input type="text" id="searchTags" name="searchTags">
     <button id="searchButton">Search</button><br><br>
 
-    <button id="toggleFormButton">Submit Form</button>
+    <div id="formContainer">
+        <button id="toggleFormButton">Show Form</button>
 
-    <form id="ideaForm" style="display: none;">
-        <label for="title">Title:</label>
-        <input type="text" id="title" name="title" required><br>
+        <form id="ideaForm" style="display: none;">
+            <label for="title">Title:</label>
+            <input type="text" id="title" name="title" required><br>
 
-        <label for="description">Description:</label>
-        <textarea id="description" name="description" required></textarea><br>
+            <label for="description">Description:</label>
+            <textarea id="description" name="description" required></textarea><br>
 
-        <label for="tags">Tags (comma-separated):</label>
-        <input type="text" id="tags" name="tags"><br>
-        
-        <label for="image">Add Picture:</label>
-        <input type="file" id="image" name="image">
-        <input type="reset" id="clearImage" value="X"><br>        
+            <label for="tags">Tags (comma-separated):</label>
+            <input type="text" id="tags" name="tags"><br>
+            
+            <label for="image">Add Picture:</label>
+            <input type="file" id="image" name="image">
+            <input type="reset" id="clearImage" value="X"><br>        
 
-        <button type="submit">Add Idea</button>
-    </form>
+            <button type="submit">Add Idea</button>
+        </form>
+    </div>
 
     <br><br>
 
     <button id="listButton">List Ideas</button>
 
-    <div id="output">Ideas List</div>
+    <div id="output"><h3>Ideas List</h3></div>
 
     <form id="editForm" style="display: none;">
         <h2>Edit Form</h2>
@@ -56,6 +58,8 @@
 
     
         <button type="submit">Save Changes</button>
+
+        <button type="reset" id="cancelEdit">Cancel</button>
     </form>
 
     <script src="script.js"></script>
