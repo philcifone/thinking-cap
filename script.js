@@ -6,6 +6,16 @@ if (localStorage.getItem('ideas')) {
     ideas = JSON.parse(localStorage.getItem('ideas'));
 }
 
+// Add an event listener to the button to toggle the form's visibility
+document.getElementById('toggleFormButton').addEventListener('click', function () {
+    const ideaForm = document.getElementById('ideaForm');
+    if (ideaForm.style.display === 'none' || ideaForm.style.display === '') {
+        ideaForm.style.display = 'block';
+    } else {
+        ideaForm.style.display = 'none';
+    }
+});
+
 // Function to add an idea
 function addIdea(event) {
     event.preventDefault();
@@ -57,7 +67,7 @@ function listIdeas() {
     editForm.style.display = 'none'; // Hide the edit form initially
 
     if (showIdeas) {
-        output.innerHTML = '';
+        output.innerHTML = 'Ideas List';
 
         ideas.forEach((idea, index) => {
             output.innerHTML += `<p><strong>${idea.timestamp}<br><br>Title:</strong> ${idea.title}</p>`;        
@@ -72,7 +82,7 @@ function listIdeas() {
         </div><br><br>`;
         });
     } else {
-        output.innerHTML = ''; // hide idea list
+        output.innerHTML = 'Ideas List'; // hide idea list
     }
 }
 
@@ -81,8 +91,6 @@ let showIdeas = false; // Variable to keep track of the idea list visibility
 
 document.getElementById('listButton').addEventListener('click', function () {
     showIdeas = !showIdeas; // Toggle the state
-
-document.getElementById('editForm').addEventListener('submit', saveEditedIdea);
 
     const listButton = document.getElementById('listButton');
     if (showIdeas) {
@@ -161,6 +169,8 @@ function saveEditedIdea(event) {
     document.getElementById("editImagePreview").src = ''; // Clear the image preview
 }
 
+document.getElementById('editForm').addEventListener('submit', saveEditedIdea);
+
 // Function to delete an idea by index
 function deleteIdea(index) {
     // Display a confirmation dialog
@@ -185,6 +195,9 @@ function searchIdeas () {
     });
 
     listFilteredIdeas(filteredIdeas);
+
+    document.getElementById("searchTags").value = '';
+
 }
 
 function listFilteredIdeas(filteredIdeas) {

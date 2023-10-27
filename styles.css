@@ -68,6 +68,10 @@ button[type="submit"] {
     margin-top: 10px;
 }
 
+#toggleFormButton {
+    margin-left: 30px;
+}
+
 #listButton {
     margin-left: 30px;
 }
