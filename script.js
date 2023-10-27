@@ -53,6 +53,9 @@ function addIdea(event) {
 function listIdeas() {
     const output = document.getElementById('output');
 
+    const editForm = document.getElementById('editForm');
+    editForm.style.display = 'none'; // Hide the edit form initially
+
     if (showIdeas) {
         output.innerHTML = '';
 
@@ -79,6 +82,8 @@ let showIdeas = false; // Variable to keep track of the idea list visibility
 document.getElementById('listButton').addEventListener('click', function () {
     showIdeas = !showIdeas; // Toggle the state
 
+document.getElementById('editForm').addEventListener('submit', saveEditedIdea);
+
     const listButton = document.getElementById('listButton');
     if (showIdeas) {
         listButton.textContent = 'Hide Ideas'; // Change button text to "Hide Ideas"
@@ -95,14 +100,65 @@ function saveIdeas() {
     localStorage.setItem('ideas', JSON.stringify(ideas));
 }
 
-// Function to edit idea
 function editIdea(index) {
-    const newDescription = prompt("Edit the Description:", ideas[index].description);
-    if (newDescription !== null) {
-        ideas[index].description = newDescription;
+    // Get the selected idea
+    const selectedIdea = ideas[index];
+
+    // Populate the edit form with the selected idea's data
+    document.getElementById("editTitle").value = selectedIdea.title;
+    document.getElementById("editDescription").value = selectedIdea.description;
+    document.getElementById("editTags").value = selectedIdea.tags.join(', ');
+
+    // Show the edit form
+    const editForm = document.getElementById('editForm');
+    editForm.style.display = 'block';
+
+    // Add a data attribute to the edit form to store the index of the idea being edited
+    editForm.setAttribute('data-index', index);
+}
+
+function saveEditedIdea(event) {
+    event.preventDefault();
+
+    // Get the index of the idea being edited from the data attribute
+    const index = parseInt(document.getElementById('editForm').getAttribute('data-index'));
+
+    // Update the idea with the edited data
+    ideas[index].title = document.getElementById("editTitle").value;
+    ideas[index].description = document.getElementById("editDescription").value;
+    ideas[index].tags = document.getElementById("editTags").value.split(',');
+
+    // Handle the edited image if a new image is selected
+    const editImageInput = document.getElementById("editImage");
+    if (editImageInput.files.length > 0) {
+        const editedImage = editImageInput.files[0];
+        
+        // You can use a FileReader to read the new image as a data URL
+        const reader = new FileReader();
+        reader.onload = function () {
+            ideas[index].image = reader.result; // Set the new image data URL
+            saveIdeas();
+            listIdeas();
+        };
+        reader.readAsDataURL(editedImage);
+    } else {
+        // No new image selected, just save the edited data
         saveIdeas();
         listIdeas();
     }
+
+    // Hide the edit form
+    document.getElementById('editForm').style.display = 'none';
+
+    // Clear the form fields
+    document.getElementById("editTitle").value = '';
+    document.getElementById("editDescription").value = '';
+    document.getElementById("editTags").value = '';
+    // Reset the image input field (clear any previously selected image)
+    document.getElementById("editImage").value = '';
+    
+    // Reset the image preview
+    document.getElementById("editImagePreview").src = ''; // Clear the image preview
 }
 
 // Function to delete an idea by index

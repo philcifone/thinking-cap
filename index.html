@@ -36,6 +36,25 @@
 
     <div id="output">Ideas</div>
 
+    <form id="editForm" style="display: none;">
+        <h2>Edit Form</h2>
+        <label for="editTitle">Title:</label>
+        <input type="text" id="editTitle" name="editTitle" required><br>
+    
+        <label for="editDescription">Description:</label>
+        <textarea id="editDescription" name="editDescription" required></textarea><br>
+    
+        <label for="editTags">Tags (comma-separated):</label>
+        <input type="text" id="editTags" name="editTags" required><br>
+    
+        <label for="editImage">Edit Picture</label>
+        <input type="file" id="editImage" name="editImage">
+        <input type="reset" id="clearImage" value="X"><br>        
+
+    
+        <button type="submit">Save Changes</button>
+    </form>
+
     <script src="script.js"></script>
 </body>
 </html>
